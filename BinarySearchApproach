@@ -1,0 +1,44 @@
+import java.util.*; // Importing Java utility package
+
+public class BinarySearch {
+
+    // Binary Search function
+    public static int binarySearch(int number[], int key) {
+        int left = 0, right = number.length - 1; // 'left' points to the first index, 'right' points to the last index
+
+        while (left <= right) { // We use '<=' to handle cases where there's only one element left to check
+            int mid = (left + right) / 2; // Finding the middle index of the current search range
+
+            // If the middle element is equal to the key, we have found the element
+            if (number[mid] == key) {
+                return mid; // Return the index where the key is found
+            } 
+            // If the middle element is greater than the key, search in the left half
+            else if (number[mid] < key) { 
+                left = mid + 1; // Move the right pointer to mid - 1 to exclude mid and search left
+            } 
+            // If the middle element is smaller than the key, search in the right half
+            else {
+                right = mid - 1; // Move the left pointer to mid + 1 to exclude mid and search right
+            }
+        }
+        return -1; // Return -1 if the key is not found in the array
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int numbers[] = {2, 4, 6, 8, 10, 12, 16}; // Sorted array in which we are searching
+        int key = 11; // The target element to search
+
+        int result = binarySearch(numbers, key); // Call the binarySearch function and store the result
+
+        // Check the result of the search
+        if (result != -1) { // If result is not -1, key was found in the array
+            System.out.println("Element found at index: " + result);
+        } else { // If result is -1, key was not found in the array
+            System.out.println("Element not found.");
+        }
+
+        sc.close(); // Closing Scanner to avoid memory leaks
+    }
+}
