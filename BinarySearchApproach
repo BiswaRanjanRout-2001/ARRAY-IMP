@@ -39,6 +39,6 @@ public class BinarySearch {
             System.out.println("Element not found.");
         }
 
-        sc.close(); // Closing Scanner to avoid memory leaks
+        sc.close(); // Closing Scanner to avoid memory leaks.
     }
 }
